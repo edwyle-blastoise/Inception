@@ -4,10 +4,10 @@ COPY /tools/sources.list /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y mariadb-server curl procps net-tools telnet vim
 
-ARG DB_ROOT_PASSWORD
-ARG DB_USER
-ARG DB_PASSWORD
-ARG DB_NAME
+# ARG DB_ROOT_PASSWORD
+# ARG DB_USER
+# ARG DB_PASSWORD
+# ARG DB_NAME
 
 COPY /conf/my.cnf /root/.my.cnf
 RUN mkdir /scripts
@@ -19,3 +19,8 @@ RUN chown mysql:mysql /run/mysqld
 EXPOSE 3306
 
 CMD ["/usr/sbin/mysqld","--init-file","/scripts/init.sql"]
+
+# COPY /tools/script.sh /var/www/html/wordpress/
+# RUN chmod 755 /var/www/html/wordpress/script.sh
+# ENTRYPOINT ["bash", "/var/www/html/wordpress/script.sh"]
+# CMD ["/usr/sbin/mysqld"]

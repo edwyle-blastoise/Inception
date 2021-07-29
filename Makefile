@@ -14,10 +14,11 @@ clean:
 	docker stop $$(docker ps -a -q)
 	docker rm $$(docker ps -a -q)
 	docker rmi $$(docker images -a -q)
+ps:
+	docker-compose ps
 console-nginx:
 	docker exec -it nginx bash
 console-mariadb:
 	docker exec -it mariadb bash
 console-wordpress:
-	cd srcs/requirements/wordpress/
 	docker exec -it wordpress bash
