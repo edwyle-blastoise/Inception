@@ -8,14 +8,9 @@ services:
         - "3306:3306"
       volumes:
         - db:/var/lib/mysql
-    #   restart: always
+      restart: always
       env_file:
         - .env
-    #   environment:
-    #     - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-    #     - DB_NAME=${DB_NAME}
-    #     - DB_USER=${DB_USER}
-    #     - DB_PASSWORD=${DB_PASSWORD}
       networks:
             - eblastoi
 
@@ -29,11 +24,6 @@ services:
         - mariadb
       env_file:
         - .env
-    #   environment:
-    #     - DB_HOST=${DB_HOST}
-    #     - DB_USER=${DB_USER}
-    #     - DB_PASSWORD=${DB_PASSWORD}
-    #     - DB_NAME=${DB_NAME}
       volumes:
           - wp:/var/www/html/wordpress
       networks:
@@ -54,14 +44,14 @@ services:
 
 volumes:
     db:
-    #   name: db
+      name: db
       driver: local
       driver_opts:
         type: none
         o: bind
         device: /home/eblastoi/data/mariadb
     wp:
-    #   name: wp
+      name: wp
       driver: local
       driver_opts:
         type: none
