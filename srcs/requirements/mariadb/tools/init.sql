@@ -1,8 +1,6 @@
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
 CREATE USER '$DB_NAME'@'%' IDENTIFIED BY '$DB_PASSWORD';
 GRANT ALL ON wordpress.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
+UPDATE mysql.user SET plugin='mysql_native_password' WHERE User = 'root' AND Host = 'localhost';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';
 FLUSH PRIVILEGES;
-
--- ALTER USER 'root'@'%' IDENTIFIED BY '$DB_ROOT_PASSWORD';
--- mysqladmin -u root password '${DB_ROOT_PASSWORD}';
--- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$DB_ROOT_PASSWORD';
