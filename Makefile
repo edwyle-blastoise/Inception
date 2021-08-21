@@ -6,9 +6,6 @@ down:
 	docker-compose -f srcs/docker-compose.yaml down
 stop:
 	docker-compose -f srcs/docker-compose.yaml stop
-restart:
-	docker-compose -f srcs/docker-compose.yaml stop
-	docker-compose -f srcs/docker-compose.yaml up -d
 clean:
 	docker stop $$(docker ps -a -q)
 	docker rm $$(docker ps -a -q)
